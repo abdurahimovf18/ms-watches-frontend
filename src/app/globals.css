@@ -4,12 +4,12 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #1f1f1f;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #1f1f1f;
     --foreground: #ededed;
   }
 }
@@ -18,4 +18,78 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+.icons {
+  @apply w-[22px] h-[22px] transition-all duration-75 hover:scale-110;
+}
+
+.left-open-animation {
+  animation: left-opening-animation 0.2s 0s 1 linear;
+}
+
+.left-close-animation {
+  animation: left-closing-animation 0.2s 0s 1 linear;
+}
+
+.top-open-animation {
+  animation: top-opening-animation 0.2s 0s 1 linear;
+}
+
+.top-close-animation {
+  animation: top-closing-animation 0.3s 0s 1 linear;
+}
+
+
+@keyframes top-opening-animation {
+  from {
+    transform: translate(0%, -100%);
+  }
+  to {
+    transform: translate(0%, 0%);
+  }
+}
+
+@keyframes top-closing-animation {
+  from {
+    transform: translate(0%, 0%);
+  }
+  to {
+    transform: translate(0%, -100%);
+  }
+}
+
+@keyframes left-opening-animation {
+  from {
+    transform: translate(-100%, 0%);
+  }
+  to {
+    transform: translate(0%, 0%);
+  }
+}
+
+@keyframes left-closing-animation {
+  from {
+    transform: translate(0%, 0%);
+  }
+  to {
+    transform: translate(-100%, 0%);
+  }
+}
+
+.bg-transparent-black {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.appear-animation {
+  animation: appear-animation 0.2s 0s 1 linear;
+}
+
+@keyframes appear-animation {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
