@@ -2,7 +2,7 @@ import "../globals.css";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { Header } from "../../components/header/header";
-import { LeftSideBar } from "@/shared/navigations/left-sidebar";
+import { Footer } from "@/components/footer/footer";
 
 
 export const metadata = {
@@ -21,14 +21,12 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <body className="antialiased h-screen bg-gray-50 text-gray-900">
+      <body className="antialiased h-screen text-gray-900">
         <Header />
-
-        <main className="overflow-y-auto w-full">
-            <NextIntlClientProvider messages={messages}>
-              {children}
-            </NextIntlClientProvider>
-          </main>
+        <NextIntlClientProvider messages={messages}>
+          {children}
+        </NextIntlClientProvider>
+        <Footer />
       </body>
     </html>
   );

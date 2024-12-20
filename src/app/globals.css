@@ -10,7 +10,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #1f1f1f;
-    --foreground: #ededed;
+    --foreground: #ffffff;
   }
 }
 
@@ -43,10 +43,12 @@ body {
 
 @keyframes top-opening-animation {
   from {
-    transform: translate(0%, -100%);
+    transform: translate(0%, -20%);
+    opacity: 0;
   }
   to {
     transform: translate(0%, 0%);
+    opacity: 1;
   }
 }
 
@@ -78,7 +80,7 @@ body {
 }
 
 .bg-transparent-black {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.25);
 }
 
 .appear-animation {
@@ -92,4 +94,17 @@ body {
   to {
     opacity: 1;
   }
+}
+
+.underline-hover {
+  @apply relative hover:underline decoration-2;
+}
+
+.underline-hover:after {
+  content: "";
+  @apply absolute bg-black left-0 bottom-0 w-full h-[1px] -translate-y-[1px];
+}
+
+.underline-hover:hover::after {
+  @apply w-0;
 }

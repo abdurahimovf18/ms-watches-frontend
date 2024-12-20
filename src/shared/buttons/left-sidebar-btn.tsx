@@ -33,7 +33,7 @@ export function LeftSideBarBtn() {
 			<ScreenBlock open={open} closeFunction={closeFunction} />
 
 			<LeftSideBar
-			className={`left-${open ? "open" : "close"}-animation z-[10]`}
+			className={`${open && "left-open-animation"} z-[51]`}
 			style={{
 				transform: `translate(${open ? "0%" : "-100%"}, 0%)`,
 			}} 

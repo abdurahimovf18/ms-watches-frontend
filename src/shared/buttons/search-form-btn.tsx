@@ -29,8 +29,8 @@ export function SearchFormBtn() {
 			<ScreenBlock open={open} closeFunction={closeFunction} />
 			
 			<div 
-			className={`top-${open ? "open" : "close"}-animation z-[10] absolute 
-			left-0 top-0 w-[100vw] h-[128px] bg-white flex justify-center items-center`}
+			className={`${open && "top-open-animation"} z-[51] absolute 
+			left-0 top-0 w-[100vw] h-[100px] bg-white flex justify-center items-center`}
 			style={{
 				transform: `translate(${open ? "0%" : "-100%"}, 0%)`,
 			}} >

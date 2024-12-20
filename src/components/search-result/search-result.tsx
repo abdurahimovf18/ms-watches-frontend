@@ -65,10 +65,10 @@ export function SearchResult({ value }: ISearchResult) {
         </p>
         <div className="w-[20px] h-full overflow-x-hidden absolute right-[5px] bottom-0 flex items-center justify-center">
             <MoveRight
-                width={20}
-                height={20}
-                id="link-value-icon"
-                className="transition-transform duration-300 ease-in-out -translate-x-2 group-hover:translate-x-0"
+              width={20}
+              height={20}
+              id="link-value-icon"
+              className="transition-transform duration-300 ease-in-out -translate-x-2 group-hover:translate-x-0"
             />
         </div>
       </Link>

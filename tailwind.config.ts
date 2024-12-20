@@ -9,6 +9,10 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        default: "Pragmatica",
+        ffmeta: "FF Meta",
+      },
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",

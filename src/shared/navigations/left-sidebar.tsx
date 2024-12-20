@@ -11,7 +11,7 @@ export function LeftSideBar({className, style}: ILeftSideBar) {
 
 	return (
 		<div 
-		className={"overflow-scroll overscroll-y-contain min-h-auto fixed left-0 top-[128px] flex items-start justify-start " + className} 
+		className={"overflow-scroll overscroll-y-contain min-h-auto fixed left-0 top-[100px] flex items-start justify-start " + className} 
 		style={style}>
 			<div className="h-screen w-[80vw] bg-white">
 				<ul className="flex flex-col w-full h-max gap-0">
