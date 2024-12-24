@@ -1,31 +1,28 @@
 "use client";
 
 import { FormInput } from "@/shared/inputs/form-input";
-import { Link } from "@/i18n/routing";
-import { Teachers } from "next/font/google";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { FormErrors } from "@/shared/errors/form-error";
+import { getAuthErrorMessage, getAuthHeaders } from "@/utils/apiClient";
+import { useRouter } from "@/i18n/routing";
 
+import axios from "axios";
 
-const teachers = Teachers({
-  weight: "800",
-  subsets: ["latin"],
-});
 
 const SignupFormSchema = z.object({
-  firstName: z
+  first_name: z
     .string()
     .min(1, "First name is required")  // Ensures a non-empty first name
     .max(50, "First name must be under 50 characters"),
   
-  lastName: z
+  last_name: z
     .string()
     .min(1, "Last name is required")  // Ensures a non-empty last name
     .max(50, "Last name must be under 50 characters"),
   
-  phoneNumber: z
+  phone_number: z
     .string()
     .min(10, "Phone number must be at least 10 digits")  // Ensures phone number is at least 10 digits
     .max(15, "Phone number cannot exceed 15 digits")  // Limits the phone number length
@@ -60,17 +57,38 @@ export default function Signin() {
     resolver: zodResolver(SignupFormSchema),
   });
 
+  const navigation = useRouter()
+
   const onSubmit: SubmitHandler<FormData> = async (data) => {
-    console.log("Form submitted:", data);
-    // Handle the form submission logic here
+    try {
+      const signup_url = "http://localhost:8000/auth/v1/signup";
+
+      const resp = await axios.post(signup_url, data, {
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+      });
+
+      if (resp.status === 200 || resp.data.ok) {
+        navigation.push({ pathname: "/account/signin" });
+      } else {
+        throw new Error(resp.data?.message || "Unexpected error occurred.");
+      }
+    } catch (error) {
+      const message = getAuthErrorMessage(error, 
+        {409: "Email or Phone number is already in use. Please, try again"})
+      setError("root", {message: message})
+    }
   };
+
 
   return (
     <main className="w-full sm:pt-7 sm:pb-16 md:pt-16 md:pb-24">
       <div className="w-full flex justify-center items-start">
         <div className="sm:w-[356px] md:w-[460px] md:px-0 h-max flex items-center justify-center flex-col mt-10">
           <h1
-            className={`sm:text-4xl md:text-[2.7rem] text-zinc-950 ${teachers.className}`}
+            className={`sm:text-4xl md:text-[2.7rem] text-zinc-950 font-teachers`}
           >
             Create account
           </h1>
@@ -89,7 +107,7 @@ export default function Signin() {
                 <FormInput
                   type="text"
                   placeholder="First name"
-                  {...register("firstName")}
+                  {...register("first_name")}
                 />
               </div>
 
@@ -98,7 +116,7 @@ export default function Signin() {
                 <FormInput
                   type="text"
                   placeholder="Last Name"
-                  {...register("lastName")}
+                  {...register("last_name")}
                 />
               </div>
 
@@ -107,7 +125,7 @@ export default function Signin() {
                 <FormInput
                   type="text"
                   placeholder="Phone Number"
-                  {...register("phoneNumber")}
+                  {...register("phone_number")}
                 />
               </div>
 							

@@ -11,7 +11,7 @@ export function ScreenBlock({ open, closeFunction }: IScreenBlock) {
     <div
       onClick={closeFunction}
       className={clsx(
-        "fixed bg-transparent-black left-0 top-[100px] w-full h-screen z-10",
+        "fixed bg-transparent-black left-0 top-[80px] w-full h-screen z-10",
         { hidden: !open }
       )}
     />

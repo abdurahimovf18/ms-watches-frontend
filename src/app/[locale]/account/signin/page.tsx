@@ -2,33 +2,24 @@
 
 import { FormInput } from "@/shared/inputs/form-input";
 import { Link } from "@/i18n/routing";
-import { Teachers } from "next/font/google";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { FormErrors } from "@/shared/errors/form-error";
-
-
-const teachers = Teachers({
-  weight: "800",
-  subsets: ["latin"],
-});
+import { setAccessToken } from "@/utils/tokenManager";
+import axios from "axios";
+import { useRouter } from "@/i18n/routing";
+import { getAuthErrorMessage } from "@/utils/apiClient";
 
 const LoginFormSchema = z.object({
   email: z
-  .string()
-  .email("Invalid email address")
-  .trim()  // Trims whitespace from the email input
-  .min(1, "Email is required"),
-
-password: z
-  .string()
-  .min(8, "Password must be at least 8 characters")
-  .max(128, "Password cannot exceed 128 characters")  // Ensures a maximum password length
-  .regex(/[a-z]/, "Password must contain at least one lowercase letter")  // Requires lowercase letter
-  .regex(/[A-Z]/, "Password must contain at least one uppercase letter")  // Requires uppercase letter
-  .regex(/[0-9]/, "Password must contain at least one number")  // Requires a number
-  .regex(/[@$!%*?&]/, "Password must contain at least one special character (@$!%*?&)"), // Requires special character
+    .string()
+    .email("Invalid email address")
+    .trim()
+    .min(1, "Email is required"),
+  password: z
+    .string()
+    .max(128, "Password cannot exceed 128 characters"),
 });
 
 export type FormData = z.infer<typeof LoginFormSchema>;
@@ -43,18 +34,33 @@ export default function Signin() {
     resolver: zodResolver(LoginFormSchema),
   });
 
+  const router = useRouter();
+
+  // Form submission handler
   const onSubmit: SubmitHandler<FormData> = async (data) => {
-    console.log("Form submitted:", data);
-    // Handle the form submission logic here
+    try {
+      const signinUrl = "http://localhost:8000/auth/v1/access_token";
+      const response = await axios.post(signinUrl, data, {
+        headers: { "Content-Type": "application/json" },
+      });
+
+      if (response.status === 200 || response.data.token) {
+        setAccessToken(response.data.token);
+        await router.push({ pathname: "/account" });
+      } else {
+        throw new Error("Unexpected response from the server.");
+      }
+    } catch (error) {
+      const message = getAuthErrorMessage(error, {401: "Invalid credentials. Please check your email and password."})
+      setError("root", {message: message})
+    }
   };
 
   return (
     <main className="w-full sm:pt-7 sm:pb-16 md:pt-16 md:pb-24">
       <div className="w-full flex justify-center items-start">
         <div className="sm:w-[356px] md:w-[460px] md:px-0 h-max flex items-center justify-center flex-col">
-          <h1
-            className={`sm:text-4xl md:text-[2.7rem] text-zinc-950 ${teachers.className}`}
-          >
+          <h1 className="sm:text-4xl md:text-[2.7rem] text-zinc-950 font-teachers">
             Login
           </h1>
           <form
@@ -103,7 +109,7 @@ export default function Signin() {
               disabled={isSubmitting}
               className="bg-black text-white mt-5 mb-2 px-4 py-2 hover:py-3 hover:px-5 hover:-translate-y-1 hover:mb-0 disabled:opacity-50"
             >
-              {isSubmitting ? "SINGING IN ..." : "SIGN IN"}
+              {isSubmitting ? "SIGNING IN ..." : "SIGN IN"}
             </button>
 
             <Link href="/account/signup">

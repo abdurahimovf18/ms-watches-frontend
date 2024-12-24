@@ -12,6 +12,7 @@ export default {
       fontFamily: {
         default: "Pragmatica",
         ffmeta: "FF Meta",
+        teachers: ["Teachers", "Arial"]
       },
       colors: {
         background: "var(--background)",

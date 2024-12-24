@@ -9,7 +9,7 @@ import "./header.css"
 export function Header() {
   return (
     <>
-      <div className="h-[100px]"></div>
+      <div className="h-[80px]"></div>
       <header className="sticky left-0 top-0 z-[50]">
         <header className="px-4 bg-white w-[100vw] fixed left-0 top-0">
 

@@ -1,35 +1,42 @@
 import { useTranslations } from "next-intl";
+import Image from "next/image";
+import { SectionCarousel } from "@/components/sectionCarousel/sectionCarousel";
 
 
 export default function Home() {
   const t = useTranslations("HomePage");
 
   return (
-    <main>
-      <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus facere odit esse eligendi non rerum expedita? Quibusdam ratione inventore placeat assumenda. Obcaecati, corrupti. Eveniet alias recusandae ducimus nisi amet esse?</h1>
-      <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus facere odit esse eligendi non rerum expedita? Quibusdam ratione inventore placeat assumenda. Obcaecati, corrupti. Eveniet alias recusandae ducimus nisi amet esse?</h1>
-      <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus facere odit esse eligendi non rerum expedita? Quibusdam ratione inventore placeat assumenda. Obcaecati, corrupti. Eveniet alias recusandae ducimus nisi amet esse?</h1>
-      <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus facere odit esse eligendi non rerum expedita? Quibusdam ratione inventore placeat assumenda. Obcaecati, corrupti. Eveniet alias recusandae ducimus nisi amet esse?</h1>
-      <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus facere odit esse eligendi non rerum expedita? Quibusdam ratione inventore placeat assumenda. Obcaecati, corrupti. Eveniet alias recusandae ducimus nisi amet esse?</h1>
-      <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus facere odit esse eligendi non rerum expedita? Quibusdam ratione inventore placeat assumenda. Obcaecati, corrupti. Eveniet alias recusandae ducimus nisi amet esse?</h1>
-      <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus facere odit esse eligendi non rerum expedita? Quibusdam ratione inventore placeat assumenda. Obcaecati, corrupti. Eveniet alias recusandae ducimus nisi amet esse?</h1>
-      <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus facere odit esse eligendi non rerum expedita? Quibusdam ratione inventore placeat assumenda. Obcaecati, corrupti. Eveniet alias recusandae ducimus nisi amet esse?</h1>
-      <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus facere odit esse eligendi non rerum expedita? Quibusdam ratione inventore placeat assumenda. Obcaecati, corrupti. Eveniet alias recusandae ducimus nisi amet esse?</h1>
-      <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus facere odit esse eligendi non rerum expedita? Quibusdam ratione inventore placeat assumenda. Obcaecati, corrupti. Eveniet alias recusandae ducimus nisi amet esse?</h1>
-      <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus facere odit esse eligendi non rerum expedita? Quibusdam ratione inventore placeat assumenda. Obcaecati, corrupti. Eveniet alias recusandae ducimus nisi amet esse?</h1>
-      <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus facere odit esse eligendi non rerum expedita? Quibusdam ratione inventore placeat assumenda. Obcaecati, corrupti. Eveniet alias recusandae ducimus nisi amet esse?</h1>
-      <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus facere odit esse eligendi non rerum expedita? Quibusdam ratione inventore placeat assumenda. Obcaecati, corrupti. Eveniet alias recusandae ducimus nisi amet esse?</h1>
-      <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus facere odit esse eligendi non rerum expedita? Quibusdam ratione inventore placeat assumenda. Obcaecati, corrupti. Eveniet alias recusandae ducimus nisi amet esse?</h1>
-      <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus facere odit esse eligendi non rerum expedita? Quibusdam ratione inventore placeat assumenda. Obcaecati, corrupti. Eveniet alias recusandae ducimus nisi amet esse?</h1>
-      <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus facere odit esse eligendi non rerum expedita? Quibusdam ratione inventore placeat assumenda. Obcaecati, corrupti. Eveniet alias recusandae ducimus nisi amet esse?</h1>
-      <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus facere odit esse eligendi non rerum expedita? Quibusdam ratione inventore placeat assumenda. Obcaecati, corrupti. Eveniet alias recusandae ducimus nisi amet esse?</h1>
-      <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus facere odit esse eligendi non rerum expedita? Quibusdam ratione inventore placeat assumenda. Obcaecati, corrupti. Eveniet alias recusandae ducimus nisi amet esse?</h1>
-      <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus facere odit esse eligendi non rerum expedita? Quibusdam ratione inventore placeat assumenda. Obcaecati, corrupti. Eveniet alias recusandae ducimus nisi amet esse?</h1>
-      <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus facere odit esse eligendi non rerum expedita? Quibusdam ratione inventore placeat assumenda. Obcaecati, corrupti. Eveniet alias recusandae ducimus nisi amet esse?</h1>
-      <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus facere odit esse eligendi non rerum expedita? Quibusdam ratione inventore placeat assumenda. Obcaecati, corrupti. Eveniet alias recusandae ducimus nisi amet esse?</h1>
-      <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus facere odit esse eligendi non rerum expedita? Quibusdam ratione inventore placeat assumenda. Obcaecati, corrupti. Eveniet alias recusandae ducimus nisi amet esse?</h1>
-      <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus facere odit esse eligendi non rerum expedita? Quibusdam ratione inventore placeat assumenda. Obcaecati, corrupti. Eveniet alias recusandae ducimus nisi amet esse?</h1>
-      <h1>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Natus facere odit esse eligendi non rerum expedita? Quibusdam ratione inventore placeat assumenda. Obcaecati, corrupti. Eveniet alias recusandae ducimus nisi amet esse?</h1>
-      </main>
+    <main className="w-full">
+      <section id="first-section" className="w-full">
+        <SectionCarousel>
+          <Image
+            src="/home/swiper-img-3.webp"
+            alt="Home Carousel Image 1"
+            width={1366}
+            height={768}
+            className="w-full h-auto object-contain"
+            loading="lazy"
+          />
+          <Image
+            src="/home/swiper-img-2.webp"
+            alt="Home Carousel Image 1"
+            width={1366}
+            height={768}
+            className="w-full h-auto object-contain"
+            loading="lazy"
+          />
+          <Image
+            src="/home/swiper-img-1.webp"
+            alt="Home Carousel Image 1"
+            width={1366}
+            height={768}
+            className="w-full h-auto object-contain"
+            loading="lazy"
+          />
+        </SectionCarousel>
+        
+      </section>
+    </main>
   );
 }
