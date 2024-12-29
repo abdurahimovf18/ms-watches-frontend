@@ -37,7 +37,7 @@ export function Footer() {
 	
 
 	return (
-		<footer className="w-[100vw] flex flex-col gap-10">
+		<footer className="w-[100vw] flex flex-col gap-10 py-5">
 			<hr className="w-full h-[1px]" />
 			<div className="w-full flex sm:flex-col-reverse
 			md:flex-row justify-center sm:items-center md:items-start gap-5 sm:px-9 md:px-14 lg:px-10 box-border">
@@ -67,9 +67,6 @@ export function Footer() {
 				</div>
 
 			</div>
-			
-
-
 		</footer>
 	)
 }

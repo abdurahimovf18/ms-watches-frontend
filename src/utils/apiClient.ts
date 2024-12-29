@@ -13,6 +13,8 @@ apiClient.interceptors.request.use((config) => {
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
+  config.headers["Content-Type"] = "application/json"
+  config.headers.Accept = "application/json"
   return config;
 }, (error) => {
   return Promise.reject(error);
@@ -57,6 +59,9 @@ export function getAuthErrorMessage(error: unknown, messages: Record<number, str
   return message;
 }
 
-
+export function getBackendUrl(path: string): string {
+  const backendHost = "http://localhost:8000"
+  return backendHost + path
+}
 
 export default apiClient;

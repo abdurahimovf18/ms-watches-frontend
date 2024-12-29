@@ -4,13 +4,13 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #1f1f1f;
+  --foreground: #000;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #ffffff;
-    --foreground: #1f1f1f;
+    --foreground: #000;
     /* --background: #1f1f1f; */
     /* --foreground: #ffffff; */
   }
@@ -23,16 +23,9 @@ body {
 }
 
 .icons {
-  @apply w-[22px] h-[22px] transition-all duration-75 hover:scale-110;
+  @apply w-[18px] h-[18px] transition-all duration-75 hover:scale-110;
 }
 
-.left-open-animation {
-  animation: left-opening-animation 0.2s 0s 1 linear;
-}
-
-.left-close-animation {
-  animation: left-closing-animation 0.2s 0s 1 linear;
-}
 
 .top-open-animation {
   animation: top-opening-animation 0.2s 0s 1 linear;
@@ -60,24 +53,6 @@ body {
   }
   to {
     transform: translate(0%, -100%);
-  }
-}
-
-@keyframes left-opening-animation {
-  from {
-    transform: translate(-100%, 0%);
-  }
-  to {
-    transform: translate(0%, 0%);
-  }
-}
-
-@keyframes left-closing-animation {
-  from {
-    transform: translate(0%, 0%);
-  }
-  to {
-    transform: translate(-100%, 0%);
   }
 }
 
@@ -109,4 +84,18 @@ body {
 
 .underline-hover:hover::after {
   @apply w-0;
+}
+
+.link-btn {
+  position: relative;
+}
+
+.link-btn::after {
+  content: "";
+  @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full -z-10;
+  background-color: inherit;
+}
+
+.link-btn:hover::after {
+  transform: translate(-50%, -50%) scale(1.03, 1.03);
 }

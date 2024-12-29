@@ -1,0 +1,86 @@
+/* LeftSidebarBox */
+.sidebar-box {
+    @apply w-[40vw] fixed top-[80px] left-0 bg-background z-[51] transition-all 
+    duration-[0.4s] overflow-x-hidden;
+    height: calc(100vh - 80px);
+}
+
+/* LeftSidebar ul li */
+.sidebar-item {
+    @apply w-full h-max pl-7 pr-5 flex justify-between items-center
+    hover:bg-zinc-100 transition-all duration-[10];
+}
+
+.sidebar-text {
+    @apply text-[0.9rem] py-1 font-default;
+}
+
+.link-item:hover .link-btn {
+    @apply h-[24px];
+    transform: scale(1.1);
+}
+
+.left-open {
+    animation: left-opening-animation 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.right-open {
+    animation: right-opening-animation 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.left-close {
+    animation: left-closing-animation 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.right-close {
+    animation: right-closing-animation 0.4s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.user-link:hover .user-icon {
+    @apply scale-110;
+}
+
+@keyframes right-opening-animation {
+    from {
+        transform: translate(-100%, 0%);
+        opacity: 0.8;
+    }
+    to {
+        transform: translate(0%, 0%);
+        opacity: 1;
+    }
+}
+
+@keyframes left-opening-animation {
+    from {
+        transform: translate(100%, 0%);
+        opacity: 0.8;
+    }
+    to {
+        transform: translate(0%, 0%);
+        opacity: 1;
+    }
+}
+
+
+@keyframes left-closing-animation {
+    from {
+        transform: translate(-100%, 0%);
+        opacity: 1;
+    }
+    to {
+        transform: translate(0%, 0%);
+        opacity: 0;
+    }
+}
+
+@keyframes right-closing-animation {
+    from {
+        transform: translate(100%, 0%);
+        opacity: 1;
+    }
+    to {
+        transform: translate(0%, 0%);
+        opacity: 0;
+    }
+}

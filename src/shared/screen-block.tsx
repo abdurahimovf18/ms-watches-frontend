@@ -1,19 +1,25 @@
 import React from "react";
 import clsx from "clsx"; // Optional: Use clsx or classnames for cleaner class handling
 
-interface IScreenBlock {
+interface IScreenBlock extends React.HTMLProps<HTMLDivElement> {
   open: boolean;
   closeFunction: () => void;
 }
 
-export function ScreenBlock({ open, closeFunction }: IScreenBlock) {
+export const ScreenBlock = React.memo(({ open, closeFunction, ...rest }: IScreenBlock) => {
+  const handleClick = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent click from propagating if necessary
+    closeFunction();
+  };
+
   return (
     <div
-      onClick={closeFunction}
+      onClick={handleClick}
       className={clsx(
-        "fixed bg-transparent-black left-0 top-[80px] w-full h-screen z-10",
-        { hidden: !open }
+        "fixed bg-black bg-opacity-50 left-0 top-[80px] w-full h-screen z-10",
+        { "hidden": !open }
       )}
+      {...rest}
     />
   );
-}
+})

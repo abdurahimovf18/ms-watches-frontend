@@ -23,8 +23,10 @@ export function SearchFormBtn() {
 	return (
 		<>
 			<Search
-			onClick={() => setOpen(true)}
-			className="icons" />
+				strokeWidth={1}
+				onClick={() => setOpen(true)}
+				className="icons cursor-pointer" 
+			/>
 
 			<ScreenBlock open={open} closeFunction={closeFunction} />
 			

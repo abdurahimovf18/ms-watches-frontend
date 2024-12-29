@@ -9,7 +9,7 @@ import { FormErrors } from "@/shared/errors/form-error";
 import { setAccessToken } from "@/utils/tokenManager";
 import axios from "axios";
 import { useRouter } from "@/i18n/routing";
-import { getAuthErrorMessage } from "@/utils/apiClient";
+import { getAuthErrorMessage, getBackendUrl } from "@/utils/apiClient";
 
 const LoginFormSchema = z.object({
   email: z
@@ -39,7 +39,7 @@ export default function Signin() {
   // Form submission handler
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     try {
-      const signinUrl = "http://localhost:8000/auth/v1/access_token";
+      const signinUrl = getBackendUrl("/users/v1/access_token");
       const response = await axios.post(signinUrl, data, {
         headers: { "Content-Type": "application/json" },
       });

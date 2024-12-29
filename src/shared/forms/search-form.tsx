@@ -29,15 +29,15 @@ export function SearchForm() {
         <button 
         type="button"
         onClick={() => setInputValue("")}
-        className=" w-[45px] h-[45px] flex items-center justify-center">
+        className="w-[45px] h-[45px] flex items-center justify-center">
           <X 
           strokeWidth={0.8} 
           className={`w-[16px] h-[16px] rounded-full bg-transparent ring-1 ring-zinc-300 transition-all
-           text-black duration-150 ${!inputValue && "opacity-0 cursor-default" }`} />
+           text-black duration-150 ${!inputValue && "hidden" }`} />
         </button>
-        <hr className="w-[2px] h-2/3 bg-zinc-300"/>
+        <hr className={`w-[1px] h-2/3 bg-zinc-300 ${!inputValue && "hidden" }`}/>
         <button className="w-[45px] h-[45px] flex items-center justify-center">
-          <Search className="w-[17px] h-[17px]" />
+          <Search strokeWidth={1} className="w-[17px] h-[17px]" />
         </button>
       </form>
       <div
@@ -45,7 +45,7 @@ export function SearchForm() {
         onFocus={() => setResultOnFocus(true)}
         onMouseLeave={() => setResultOnFocus(false)}
         onBlur={() => setResultOnFocus(false)}
-        className={`absolute top-[46px] transition-all duration-200 ${
+        className={`absolute top-[47px] transition-all duration-200 ${
           inputValue && (inputOnfocus || resultOnFocus || inputOnHover) ? "opacity-100 scale-100" : "opacity-0 scale-95 pointer-events-none"
         }`}
       >

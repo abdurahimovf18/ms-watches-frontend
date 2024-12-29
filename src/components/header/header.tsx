@@ -11,7 +11,7 @@ export function Header() {
     <>
       <div className="h-[80px]"></div>
       <header className="sticky left-0 top-0 z-[50]">
-        <header className="px-4 bg-white w-[100vw] fixed left-0 top-0">
+        <nav className="px-4 bg-white w-[100vw] fixed left-0 top-0">
 
           <nav className="flex justify-between items-center">
 
@@ -31,16 +31,16 @@ export function Header() {
               <div className="flex items-center justify-center gap-2">
                 <LeftSideBarBtn />
                 <SearchFormBtn />
-                <ShoppingBag className="icons" />
+                <ShoppingBag strokeWidth={1} className="icons cursor-pointer" />
                 <Link href="/account/signin/">
-                  <UserRound className="icons"/>
+                  <UserRound strokeWidth={1} className="icons cursor-pointer"/>
                 </Link>
               </div>
             </div>
 
           </nav>
 
-          </header>
+          </nav>
       </header>
     </>
   )

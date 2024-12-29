@@ -1,6 +1,9 @@
 import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { SectionCarousel } from "@/components/sectionCarousel/sectionCarousel";
+import { SectionCarousel } from "@/shared/carousels/sectionCarousel/sectionCarousel";
+import { Link } from "@/i18n/routing";
+import { BrandsSection } from "@/components/homepage/brands-section";
+import { LinksSection } from "@/components/homepage/links-section";
 
 
 export default function Home() {
@@ -37,6 +40,10 @@ export default function Home() {
         </SectionCarousel>
         
       </section>
+
+      <LinksSection />
+      <BrandsSection />
+
     </main>
   );
 }

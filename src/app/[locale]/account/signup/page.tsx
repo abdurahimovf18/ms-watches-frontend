@@ -5,7 +5,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { FormErrors } from "@/shared/errors/form-error";
-import { getAuthErrorMessage, getAuthHeaders } from "@/utils/apiClient";
+import { getAuthErrorMessage, getBackendUrl } from "@/utils/apiClient";
 import { useRouter } from "@/i18n/routing";
 
 import axios from "axios";
@@ -61,14 +61,9 @@ export default function Signin() {
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     try {
-      const signup_url = "http://localhost:8000/auth/v1/signup";
+      const signup_url = getBackendUrl("/users/v1/signup");
 
-      const resp = await axios.post(signup_url, data, {
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-      });
+      const resp = await axios.post(signup_url, data);
 
       if (resp.status === 200 || resp.data.ok) {
         navigation.push({ pathname: "/account/signin" });
@@ -81,7 +76,6 @@ export default function Signin() {
       setError("root", {message: message})
     }
   };
-
 
   return (
     <main className="w-full sm:pt-7 sm:pb-16 md:pt-16 md:pb-24">
