@@ -31,3 +31,5 @@ export const LeftSidebarBox = React.memo(({
 		{children}
 	</div>
 ))
+
+LeftSidebarBox.displayName = "LeftSidebarBox";

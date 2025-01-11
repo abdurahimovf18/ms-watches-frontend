@@ -3,10 +3,12 @@
 import axios from "axios";
 import { getAccessToken } from "./tokenManager";
 
+
 const apiClient = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
+  baseURL: getBackendUrl(),
   timeout: 5000,
 });
+
 
 apiClient.interceptors.request.use((config) => {
   const token = getAccessToken();
@@ -19,6 +21,11 @@ apiClient.interceptors.request.use((config) => {
 }, (error) => {
   return Promise.reject(error);
 });
+
+
+export function isAuthenticated(): boolean {
+  return Boolean(getAccessToken())
+}
 
 
 export function getAuthHeaders(headers: Record<string, string> = {}): Record<string, string> {
@@ -59,7 +66,7 @@ export function getAuthErrorMessage(error: unknown, messages: Record<number, str
   return message;
 }
 
-export function getBackendUrl(path: string): string {
+export function getBackendUrl(path: string = "/"): string {
   const backendHost = "http://localhost:8000"
   return backendHost + path
 }

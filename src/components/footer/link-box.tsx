@@ -14,12 +14,12 @@ interface iLinkBox {
 
 export function LinkBox({title, links}: iLinkBox) {
 	return (
-		<div className="flex flex-col gap-2 sm:1/3 md:w-1/4 xl:w-1/4 box-border">
-			<h3 className={`text-[0.9rem] text-zinc-950 ${teachers.className}`}>{title}</h3>
+		<div className="flex flex-col gap-2 sm:w-1/3 xl:w-1/4 box-border">
+			<h3 className={`text-[0.9rem] ${teachers.className}`}>{title}</h3>
 			<ul className="flex flex-col gap-1">
 				{Object.entries(links).map(([key, value]) => (
 						<li key={key}
-						className="text-[0.7rem]">
+						className="text-[0.7rem] opacity-85">
 							<Link href={value}>{key}</Link>
 						</li>
 					))}	

@@ -44,7 +44,7 @@ export function SearchResult({ value }: ISearchResult) {
   };
 
   return (
-    <div className="absolute gap-2 left-0 top-0 sm:w-[100vw] md:w-[80vw] lg:w-[50vw] 
+    <div className="absolute gap-2 left-0 top-0 sm:w-[100vw] md:w-[90vw] lg:w-[70vw] xl:w-[60vw]
     sm:max-h-[100vh] md:max-h-[60vh] bg-white shadow-lg overflow-y-scroll overscroll-contain">
       <div className="flex gap-2 w-full sm:flex-col md:flex-row">
 				<div className="flex flex-col sm:w-[100%] md:w-[40%] gap-2">

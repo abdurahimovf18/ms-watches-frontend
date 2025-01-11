@@ -12,7 +12,7 @@ type SidebarContents = {
 };
 
 
-export const LeftSidebar = React.memo(({ open, setOpen }: iLeftSidebar) => {
+export const LeftSidebar = ({ open, setOpen }: iLeftSidebar) => {
   const leftSidebarContents: SidebarContents = {
     Brands: {
       Tissot: { new: "/" },
@@ -52,4 +52,4 @@ export const LeftSidebar = React.memo(({ open, setOpen }: iLeftSidebar) => {
       isChild={false}
     />
   );
-})
+}

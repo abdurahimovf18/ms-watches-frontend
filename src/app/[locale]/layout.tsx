@@ -3,6 +3,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { Header } from "../../components/header/header";
 import { Footer } from "@/components/footer/footer";
+import { ReactQueryClientProvider } from "@/utils/providers/react-query";
 
 
 export const metadata = {
@@ -21,10 +22,13 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <body className="antialiased h-screen text-gray-900">
+      <body className="antialiased min-h-screen w-screen overflow-x-hidden bg-background 
+        text-foreground transition-colors ease-out duration-300">
         <NextIntlClientProvider messages={messages}>
           <Header />
-          {children}
+          <ReactQueryClientProvider>
+            {children}
+          </ReactQueryClientProvider>
           <Footer />
         </NextIntlClientProvider>
       </body>

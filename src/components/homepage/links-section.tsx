@@ -8,14 +8,14 @@ export function LinksSection() {
 			id="links-section"
 			className="w-screen h-[408px] relative flex justify-center items-center md:px-20 sm:px-10"
 		>
-			<div className="min-w-screen sm:w-[1020px] lg:w-[1366px] 
-			h-full absolute left-1/2 top-1/2 -z-10 -translate-x-1/2 -translate-y-1/2">
+			<div className="min-w-screen sm:w-[1440px] 2xl:w-screen
+			h-full overflow-hidden absolute left-1/2 top-1/2 -z-10 -translate-x-1/2 -translate-y-1/2">
 				<Image
 					src="/home/links-session-img.png"
 					alt="bg-iamge"
-					width={1366}
-					height={768}
-					className="w-full h-[408px]"
+					width={1920}
+					height={1080}
+					className="w-full min-h-[408px] absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
 				/>
 			</div>
 
@@ -35,14 +35,17 @@ export function LinksSection() {
 				<div className="w-max h-max flex sm:gap-2 md:gap-3 sm:pt-5 md:pt-10 sm:flex-col md:flex-row">
 					<Link 
 						href="/"
-						className="link-btn text-foreground bg-background w-56 h-9 flex items-center justify-center"
-					>ABOUT US</Link>
+						className="link-btn text-zinc-900 bg-white w-56 h-9 flex items-center justify-center"
+					>
+						<span>ABOUT US</span>
+					</Link>
 					<Link 
 						href="/"
-						className="link-btn text-foreground bg-background w-56 h-9 flex items-center justify-center"
-					>OUR STORES</Link>
+						className="link-btn text-zinc-900 bg-white w-56 h-9 flex items-center justify-center"
+					>
+						<span>OUR STORES</span>
+					</Link>
 				</div>
-
 			</div>
 		</section>
 	)

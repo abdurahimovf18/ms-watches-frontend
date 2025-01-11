@@ -59,7 +59,7 @@ export default function Signin() {
   return (
     <main className="w-full sm:pt-7 sm:pb-16 md:pt-16 md:pb-24">
       <div className="w-full flex justify-center items-start">
-        <div className="sm:w-[356px] md:w-[460px] md:px-0 h-max flex items-center justify-center flex-col">
+        <div className="sm:w-[90%] md:w-[400px] md:px-0 h-max flex items-center justify-center flex-col">
           <h1 className="sm:text-4xl md:text-[2.7rem] text-zinc-950 font-teachers">
             Login
           </h1>

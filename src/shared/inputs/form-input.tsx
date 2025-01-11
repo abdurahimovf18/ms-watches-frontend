@@ -4,7 +4,6 @@ import React from "react"
 
 interface IFormInput extends React.InputHTMLAttributes<HTMLInputElement> {
 	placeholder: string;
-	[key: string]: any;
 }
 
 

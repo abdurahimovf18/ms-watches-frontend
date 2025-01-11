@@ -20,7 +20,7 @@ export function LeftSideBarBtn() {
 	const closeFunction = () => setOpen(false)
 
 	return (
-		<div className="sm:block md:hidden">
+		<div className="sm:block lg:hidden">
 			<div 
 				className={clsx(
 					"icons flex items-center justify-center cursor-pointer",

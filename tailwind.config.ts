@@ -7,6 +7,7 @@ export default {
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/shared/**/*.{js,ts,jsx,tsx,mdx}"
   ],
+  
   theme: {
     extend: {
       fontFamily: {
@@ -19,13 +20,16 @@ export default {
         foreground: "var(--foreground)",
       },
       screens: {
-        sm: '375px',
-        md: '768px', 
-        lg: '1024px',
-        xl: '1280px',
-        '2xl': '1600px',
+        sm: '320px', 
+        md: '481px', 
+        lg: '769px',
+        xl: '1025px',
+        '2xl': '1441px',
+        '3xl': '1921px',
       },
+      aspectRatio: {
+        '4/3': '4 / 3'
+      }
     },
   },
-  plugins: [],
 } satisfies Config;

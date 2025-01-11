@@ -65,10 +65,10 @@ export default function Signin() {
 
       const resp = await axios.post(signup_url, data);
 
-      if (resp.status === 200 || resp.data.ok) {
+      if (resp.status === 201) {
         navigation.push({ pathname: "/account/signin" });
       } else {
-        throw new Error(resp.data?.message || "Unexpected error occurred.");
+        throw new Error(resp.data?.detail || "Unexpected error occurred.");
       }
     } catch (error) {
       const message = getAuthErrorMessage(error, 
@@ -80,7 +80,7 @@ export default function Signin() {
   return (
     <main className="w-full sm:pt-7 sm:pb-16 md:pt-16 md:pb-24">
       <div className="w-full flex justify-center items-start">
-        <div className="sm:w-[356px] md:w-[460px] md:px-0 h-max flex items-center justify-center flex-col mt-10">
+        <div className="sm:w-[90%] md:w-[400px] md:px-0 h-max flex items-center justify-center flex-col mt-10">
           <h1
             className={`sm:text-4xl md:text-[2.7rem] text-zinc-950 font-teachers`}
           >

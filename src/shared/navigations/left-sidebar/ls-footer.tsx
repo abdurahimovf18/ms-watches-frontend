@@ -3,7 +3,7 @@ import { Link } from "@/i18n/routing";
 import { User } from "lucide-react";
 import "./style.css"
 
-export const LeftSidebarFooter = React.memo(() => {
+export const LeftSidebarFooter = () => {
   return (
 		<div className="w-full py-4 mt-7 bg-zinc-100">
 			<Link
@@ -17,4 +17,4 @@ export const LeftSidebarFooter = React.memo(() => {
 			</Link>
 		</div>
 	)
-})
+}

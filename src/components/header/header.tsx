@@ -1,47 +1,51 @@
-import { UserRound, ShoppingBag } from "lucide-react"
-import { LeftSideBarBtn } from "@/shared/buttons/left-sidebar-btn"
-import { MainLogo } from "@/shared/logo"
-import { SearchFormBtn } from "@/shared/buttons/search-form-btn"
-import { Link } from "@/i18n/routing"
-import "./header.css"
+import { ShoppingBag } from "lucide-react";
+import { LeftSideBarBtn } from "@/shared/buttons/left-sidebar-btn";
+import { MainLogo } from "@/shared/logo";
+import { SearchFormBtn } from "@/shared/buttons/search-form-btn";
+import { Link } from "@/i18n/routing";
+import { LoginAccountIcon } from "@/shared/buttons/loginAccountIcon";
+import React from "react";
+import "./header.css";
+
+const navLinks = ["Promotions", "Brands", "About Us", "Contact Us", "Blogs"];
+
+export const HeaderNavLinks = React.memo(() => (
+  <ul className="items-center justify-center gap-5 sm:hidden lg:flex">
+    {navLinks.map((link) => (
+      <li key={link} className="header-ul-element">
+        {link}
+      </li>
+    ))}
+  </ul>
+));
+
+const HeaderActions = () => (
+  <div className="flex items-center justify-center gap-2">
+    <LeftSideBarBtn />
+    <SearchFormBtn />
+    <ShoppingBag strokeWidth={1} className="icons cursor-pointer" />
+    <LoginAccountIcon />
+  </div>
+);
 
 
-export function Header() {
+export const Header = () => {
   return (
     <>
-      <div className="h-[80px]"></div>
-      <header className="sticky left-0 top-0 z-[50]">
-        <nav className="px-4 bg-white w-[100vw] fixed left-0 top-0">
-
-          <nav className="flex justify-between items-center">
-
+      <hr className="h-[80px]" />
+      <header className="fixed left-0 top-0 z-[50]">
+        <nav className="px-4 w-[100vw] bg-background fixed left-0 top-0">
+          <div className="flex justify-between items-center">
             <Link href="/">
               <MainLogo />
             </Link>
-
             <div className="flex justify-end items-center gap-6">
-              <ul className="items-center justify-center gap-5 sm:hidden md:flex lg:flex xl:flex 2xl:flex">
-                <li className="header-ul-element">Promotions</li>
-                <li className="header-ul-element">Brands</li>
-                <li className="header-ul-element">About Us</li> 
-                <li className="header-ul-element">Contact Us</li> 
-                <li className="header-ul-element">Blogs</li> 
-              </ul>
-
-              <div className="flex items-center justify-center gap-2">
-                <LeftSideBarBtn />
-                <SearchFormBtn />
-                <ShoppingBag strokeWidth={1} className="icons cursor-pointer" />
-                <Link href="/account/signin/">
-                  <UserRound strokeWidth={1} className="icons cursor-pointer"/>
-                </Link>
-              </div>
+              <HeaderNavLinks />
+              <HeaderActions />
             </div>
-
-          </nav>
-
-          </nav>
+          </div>
+        </nav>
       </header>
     </>
-  )
-}
+  );
+};

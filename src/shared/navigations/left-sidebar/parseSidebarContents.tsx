@@ -2,7 +2,7 @@
 
 import "./style.css";
 import { Link } from "@/i18n/routing";
-import { MoveRight, User } from "lucide-react";
+import { MoveRight } from "lucide-react";
 import { useState } from "react";
 import { LeftSidebarFooter } from "./ls-footer";
 import { LeftSidebarHeader } from "./ls-header";
@@ -97,3 +97,5 @@ export const ParseSidebarContents = React.memo(
     );
   }
 );
+
+ParseSidebarContents.displayName = "ParseSidebarContents";

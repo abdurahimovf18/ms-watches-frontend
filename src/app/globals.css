@@ -2,17 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+
 :root {
-  --background: #ffffff;
-  --foreground: #000;
+  --background: #fff;
+  --foreground: #18181b;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #ffffff;
-    --foreground: #000;
-    /* --background: #1f1f1f; */
-    /* --foreground: #ffffff; */
+    --background: #18181b;
+    --foreground: #fff;
   }
 }
 
@@ -87,15 +86,47 @@ body {
 }
 
 .link-btn {
-  position: relative;
+  position: relative !important;
+}
+
+.link-btn span {
+  @apply bg-transparent z-[10];
+}
+
+.center-absolute {
+  @apply left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2;
+}
+
+.link-btn-css {
+  @apply absolute center-absolute bg-inherit ;
+}
+
+.link-btn::before {
+  @apply link-btn-css hidden ;
+  transform: translate(-50%, -50%);
+  width: calc(100% + 2px);
+  height: calc(100% + 2px);
 }
 
 .link-btn::after {
   content: "";
-  @apply absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full -z-10;
+  @apply link-btn-css size-full;
   background-color: inherit;
 }
 
-.link-btn:hover::after {
-  transform: translate(-50%, -50%) scale(1.03, 1.03);
+.link-btn:hover::before {
+  content: "";
+  @apply block;
+}
+
+.container {
+  @apply sm:w-[94%] md:w-[90%] lg:w-[85%] xl:w-[80%] 2xl:w-[75%] max-w-[1152px];
+}
+
+.container-box {
+  @apply w-screen justify-center flex;
+}
+
+.section-title {
+  @apply w-full font-teachers font-black text-[1.575rem];
 }

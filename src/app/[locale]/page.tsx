@@ -1,13 +1,15 @@
-import { useTranslations } from "next-intl";
+// import { useTranslations } from "next-intl";
 import Image from "next/image";
 import { SectionCarousel } from "@/shared/carousels/sectionCarousel/sectionCarousel";
-import { Link } from "@/i18n/routing";
 import { BrandsSection } from "@/components/homepage/brands-section";
 import { LinksSection } from "@/components/homepage/links-section";
+import { FeaturedProductsSection } from "@/components/homepage/featured-products";
+import { TopWeeklyWatchSection } from "@/components/homepage/weekly-watch";
+import { NewArrivalsSection } from "@/components/homepage/new-arrivals-section";
 
 
 export default function Home() {
-  const t = useTranslations("HomePage");
+  // const t = useTranslations("HomePage");
 
   return (
     <main className="w-full">
@@ -43,7 +45,9 @@ export default function Home() {
 
       <LinksSection />
       <BrandsSection />
-
+      <FeaturedProductsSection />
+      <TopWeeklyWatchSection />
+      <NewArrivalsSection />
     </main>
   );
 }

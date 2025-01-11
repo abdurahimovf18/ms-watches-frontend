@@ -1,7 +1,7 @@
 'use client'
 
 import { Search, X } from "lucide-react"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { SearchResult } from "@/components/search-result/search-result"
 import { FormInput } from "../inputs/form-input"
 
@@ -13,7 +13,7 @@ export function SearchForm() {
   const [inputOnHover, setInputOnHover] = useState<boolean>(false)
 
   return (
-    <div className="relative sm:w-[100vw] md:w-[80vw] lg:w-[50vw] xl:w-[50vw]">
+    <div className="relative sm:w-[100vw] md:w-[90vw] lg:w-[70vw] xl:w-[60vw]">
       <form className="flex items-center h-[45px] ring-2 ring-black relative sm:mx-5 md:mx-0">
         <div className="w-full h-full">
           <FormInput 

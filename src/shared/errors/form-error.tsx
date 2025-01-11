@@ -3,7 +3,6 @@ import { clsx } from "clsx";
 interface Errors {
   [fieldName: string]: {
     message?: string;
-    [key: string]: any;
   };
 }
 

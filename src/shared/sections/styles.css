@@ -1,0 +1,13 @@
+
+.error-link {
+    @apply flex justify-center items-center gap-2 transition-all text-foreground text-xl relative;
+}
+
+.error-link::after {
+    content: "";
+    @apply absolute w-full h-[1px] bg-foreground left-0 bottom-0 -translate-y-[5px];
+}
+
+.error-link:hover::after {
+    @apply h-[2px] -translate-y-[4px];
+}

@@ -25,3 +25,5 @@ export const LeftSidebarHeader = React.memo(({ current, setOpen }: iLeftSidebarH
 		</div>
 	)
 })
+
+LeftSidebarHeader.displayName = "LeftSidebarHeader";

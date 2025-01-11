@@ -23,3 +23,5 @@ export const ScreenBlock = React.memo(({ open, closeFunction, ...rest }: IScreen
     />
   );
 })
+
+ScreenBlock.displayName = "ScreenBlock";
