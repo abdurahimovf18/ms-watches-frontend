@@ -23,7 +23,7 @@ const jost = Jost({
 function Result({ imageSrc, name }: ResultLineData) {
   return (
     <li
-      className={`flex items-center w-full py-3 gap-2 px-[5%] cursor-pointer hover:bg-zinc-100 transition-all duration-75 ${jost.className}`}
+      className={`bg-hover flex items-center w-full py-3 gap-2 px-[5%] cursor-pointer transition-all duration-75 ${jost.className}`}
     >
       {imageSrc && (
         <Image
@@ -46,7 +46,7 @@ function Result({ imageSrc, name }: ResultLineData) {
 export function Results({ tag, searchResults }: IResults) {
   return (
     <div>
-      <h3 className="px-[5%] text-[0.7rem] py-1 text-zinc-600">{tag}</h3>
+      <h3 className="px-[5%] text-[0.7rem] py-1 text-foreground">{tag}</h3>
       <hr className="w-[90%] mx-auto" />
 
       <div className="flex flex-col justify-center items-start w-full">
@@ -57,7 +57,7 @@ export function Results({ tag, searchResults }: IResults) {
             ))}
           </ul>
         ) : (
-          <p className="text-xl text-zinc-500">No results found.</p>
+          <p className="text-xl text-foreground opacity-70">No results found.</p>
         )}
       </div>
     </div>

@@ -22,8 +22,7 @@ export default async function LocaleLayout({
 
   return (
     <html lang={locale}>
-      <body className="antialiased min-h-screen w-screen overflow-x-hidden bg-background 
-        text-foreground transition-colors ease-out duration-300">
+      <body className="">
         <NextIntlClientProvider messages={messages}>
           <Header />
           <ReactQueryClientProvider>

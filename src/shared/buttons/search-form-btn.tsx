@@ -32,9 +32,10 @@ export function SearchFormBtn() {
 			
 			<div 
 			className={`${open && "top-open-animation"} z-[51] absolute 
-			left-0 top-0 w-[100vw] h-[80px] bg-white flex justify-center items-center`}
+			left-0 top-0 w-[100vw] h-[80px] bg-background flex justify-center items-center`}
 			style={{
 				transform: `translate(${open ? "0%" : "-100%"}, 0%)`,
+				transition: "background-color 300ms ease-out, color 300ms ease-out, "
 			}} >
 				<SearchForm />
 			</div>

@@ -14,7 +14,7 @@ export function SearchForm() {
 
   return (
     <div className="relative sm:w-[100vw] md:w-[90vw] lg:w-[70vw] xl:w-[60vw]">
-      <form className="flex items-center h-[45px] ring-2 ring-black relative sm:mx-5 md:mx-0">
+      <form className="flex items-center h-[45px] ring-2 ring-foreground relative sm:mx-5 md:mx-0">
         <div className="w-full h-full">
           <FormInput 
           placeholder="Search" 
@@ -32,10 +32,10 @@ export function SearchForm() {
         className="w-[45px] h-[45px] flex items-center justify-center">
           <X 
           strokeWidth={0.8} 
-          className={`w-[16px] h-[16px] rounded-full bg-transparent ring-1 ring-zinc-300 transition-all
-           text-black duration-150 ${!inputValue && "hidden" }`} />
+          className={`w-[16px] h-[16px] rounded-full bg-transparent ring-1 ring-foreground ring-opacity-5 transition-all
+           text-foreground duration-150 ${!inputValue && "hidden" }`} />
         </button>
-        <hr className={`w-[1px] h-2/3 bg-zinc-300 ${!inputValue && "hidden" }`}/>
+        <hr className={`w-[1px] h-2/3 bg-foreground opacity-40 ${!inputValue && "hidden" }`}/>
         <button className="w-[45px] h-[45px] flex items-center justify-center">
           <Search strokeWidth={1} className="w-[17px] h-[17px]" />
         </button>

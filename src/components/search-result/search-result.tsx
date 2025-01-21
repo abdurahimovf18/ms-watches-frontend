@@ -45,7 +45,7 @@ export function SearchResult({ value }: ISearchResult) {
 
   return (
     <div className="absolute gap-2 left-0 top-0 sm:w-[100vw] md:w-[90vw] lg:w-[70vw] xl:w-[60vw]
-    sm:max-h-[100vh] md:max-h-[60vh] bg-white shadow-lg overflow-y-scroll overscroll-contain">
+     bg-background shadow-lg overflow-y-scroll overscroll-contain">
       <div className="flex gap-2 w-full sm:flex-col md:flex-row">
 				<div className="flex flex-col sm:w-[100%] md:w-[40%] gap-2">
 					<SearchTag tag="SUGGESTIONS" searchResults={data.SUGGESTIONS} />
@@ -59,7 +59,7 @@ export function SearchResult({ value }: ISearchResult) {
       <Link 
         href="/"
         id="link-value"
-        className="relative flex items-center justify-between h-[40px] px-2 hover:bg-zinc-100 transition-all duration-75 overflow-hidden">
+        className="relative flex items-center justify-between px-2 bg-hover transition-all duration-75 overflow-hidden">
         <p className="inline-block break-words pr-[20px] max-w-full overflow-hidden text-ellipsis">
             search for “{value}”
         </p>

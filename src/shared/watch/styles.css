@@ -1,0 +1,4 @@
+
+.watch:hover .image-content {
+    @apply scale-100;
+}

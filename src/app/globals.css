@@ -19,6 +19,8 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  @apply antialiased min-h-screen w-screen overflow-x-hidden bg-background 
+  text-foreground transition-colors ease-out duration-300;
 }
 
 .icons {
@@ -78,7 +80,7 @@ body {
 
 .underline-hover:after {
   content: "";
-  @apply absolute bg-black left-0 bottom-0 w-full h-[1px] -translate-y-[1px];
+  @apply absolute bg-foreground left-0 bottom-0 w-full h-[1px] -translate-y-[1px];
 }
 
 .underline-hover:hover::after {
@@ -129,4 +131,26 @@ body {
 
 .section-title {
   @apply w-full font-teachers font-black text-[1.575rem];
+}
+
+.loading {
+  @apply relative;
+}
+
+/* Add the shimmer effect in the ::before pseudo-element */
+.loading::before {
+  content: "";
+  @apply absolute left-0 top-0 z-[1]; /* Apply Tailwind utilities */
+  background: linear-gradient(to bottom right, #0000 calc(50% - 40px), #fff 50%, #0000 calc(50% + 40px)); /* Linear gradient */
+  background-size: calc(200% + 80px) calc(200% + 80px); /* Gradient size */
+  background-position: bottom right; /* Initial position */
+  animation: l8 1s infinite; /* Animation */
+  background-color: var(--foreground); /* Apply background color */
+}
+
+/* Keyframes for the animation */
+@keyframes l8 {
+  100% {
+    background-position: top left;
+  }
 }

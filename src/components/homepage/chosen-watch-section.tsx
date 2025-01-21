@@ -4,7 +4,6 @@ import { getBackendUrl } from "@/utils/apiClient"
 import { LoadingSection } from "@/shared/sections/loading-section";
 import { ErrorSection } from "@/shared/sections/error-section";
 
-
 export function ChosenWatchSection() {
   const { isLoading, error, data } = useQuery({
     queryKey: ["chosenWatchQuery"],

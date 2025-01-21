@@ -1,11 +1,10 @@
 "use client"
 
 import { useQuery } from "@tanstack/react-query"
-import axios from "axios";
 import { ErrorSection } from "@/shared/sections/error-section";
 import { LoadingSection } from "@/shared/sections/loading-section";
-import { getBackendUrl } from "@/utils/apiClient";
-import { iWatch } from "@/shared/watch/watch";
+import { API } from "@/utils/apiClient";
+import { iWatch, Watch } from "@/shared/watch/watch";
 
 
 type Data = iWatch[]
@@ -15,9 +14,8 @@ export function NewArrivalsSection() {
 	const {isLoading, error, data} = useQuery<Data>({
 		queryKey: ["new-arrivals"],
 		queryFn: async () => {
-			const url = getBackendUrl("/watches/V1/new-arrivals")
-			const resp = await axios.get(
-				url,
+			const resp = await API.get(
+				"watches/v1/new-arrivals",
 				{
 					params: {
 						limit: 4,
@@ -34,10 +32,14 @@ export function NewArrivalsSection() {
   return (
 		<section className="container-box py-4">
 			<div className="container flex flex-col">
-					<h1 className="section-title">NEW ARRIVALS</h1>
-					<div>
-						
-					</div>
+				<h1 className="section-title">NEW ARRIVALS</h1>
+				<div className="w-full flex flex-wrap items-start">
+					{data.map((value) => (
+						<div key={value.watch_id} className="sm:w-1/2 lg:w-1/4 px-1">
+							<Watch {...value} />
+						</div>
+					))}
+				</div>
 			</div>
 		</section>
 	)

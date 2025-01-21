@@ -1,5 +1,6 @@
 import Image from "next/image";
 
+
 interface iBrandLink {
   brandImageUrl: string;
   brandName: string;
@@ -60,7 +61,7 @@ export function BrandsSection() {
   ];
 
   return (
-    <section id="brands-section" className="container-box py-6">
+    <section id="brands-section" className="container-box py-6 relative">
       <div className="flex container flex-col">
         <h1 className="section-title">SHOP OUR BRANDS</h1>
         <div className="w-full pt-6">

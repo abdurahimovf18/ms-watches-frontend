@@ -2,3 +2,8 @@
 .header-ul-element {
     @apply text-[0.8rem] font-bold cursor-pointer hover:underline transition-all duration-100;
 }
+
+.header-ul-element:hover span,
+.header-ul-element span:hover {
+    @apply inline-block;
+}

@@ -7,8 +7,8 @@ import { z } from "zod";
 import { FormErrors } from "@/shared/errors/form-error";
 import { getAuthErrorMessage, getBackendUrl } from "@/utils/apiClient";
 import { useRouter } from "@/i18n/routing";
-
-import axios from "axios";
+import { API } from "@/utils/apiClient"
+import { url } from "inspector";
 
 
 const SignupFormSchema = z.object({
@@ -61,9 +61,7 @@ export default function Signin() {
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     try {
-      const signup_url = getBackendUrl("/users/v1/signup");
-
-      const resp = await axios.post(signup_url, data);
+      const resp = await API.post("users/v1/signup", data);
 
       if (resp.status === 201) {
         navigation.push({ pathname: "/account/signin" });
@@ -82,7 +80,7 @@ export default function Signin() {
       <div className="w-full flex justify-center items-start">
         <div className="sm:w-[90%] md:w-[400px] md:px-0 h-max flex items-center justify-center flex-col mt-10">
           <h1
-            className={`sm:text-4xl md:text-[2.7rem] text-zinc-950 font-teachers`}
+            className={`sm:text-4xl md:text-[2.7rem] font-teachers`}
           >
             Create account
           </h1>
@@ -97,7 +95,7 @@ export default function Signin() {
             <div className="flex flex-col justify-center items-center gap-4 w-full h-max">
 
 							{/* First Name Input */}
-              <div className="w-full h-[45px] ring-1 ring-zinc-400 hover:ring-zinc-500 hover:ring-2">
+              <div className="w-full h-[45px] ring-1 ring-foreground ring-opacity-80 hover:ring-2">
                 <FormInput
                   type="text"
                   placeholder="First name"
@@ -106,7 +104,7 @@ export default function Signin() {
               </div>
 
 							{/* Last Name Input */}
-              <div className="w-full h-[45px] ring-1 ring-zinc-400 hover:ring-zinc-500 hover:ring-2">
+              <div className="w-full h-[45px] ring-1 ring-foreground ring-opacity-80 hover:ring-2">
                 <FormInput
                   type="text"
                   placeholder="Last Name"
@@ -115,7 +113,7 @@ export default function Signin() {
               </div>
 
 							{/* Phone Number Input */}
-              <div className="w-full h-[45px] ring-1 ring-zinc-400 hover:ring-zinc-500 hover:ring-2">
+              <div className="w-full h-[45px] ring-1 ring-foreground ring-opacity-80 hover:ring-2">
                 <FormInput
                   type="text"
                   placeholder="Phone Number"
@@ -124,7 +122,7 @@ export default function Signin() {
               </div>
 							
               {/* Email Input */}
-              <div className="w-full h-[45px] ring-1 ring-zinc-400 hover:ring-zinc-500 hover:ring-2">
+              <div className="w-full h-[45px] ring-1 ring-foreground ring-opacity-80 hover:ring-2">
                 <FormInput
                   type="text"
                   placeholder="Email"
@@ -133,7 +131,7 @@ export default function Signin() {
               </div>
 
               {/* Password Input */}
-              <div className="w-full h-[45px] ring-1 ring-zinc-400 hover:ring-zinc-500 hover:ring-2">
+              <div className="w-full h-[45px] ring-1 ring-foreground ring-opacity-80 hover:ring-2">
                 <label htmlFor="password" className="sr-only">
                   Password
                 </label>
@@ -151,7 +149,7 @@ export default function Signin() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="bg-black text-white mt-5 mb-2 px-4 py-2 hover:py-3 hover:px-5 hover:-translate-y-1 hover:mb-0 disabled:opacity-50"
+              className="bg-foreground text-background mt-5 mb-2 px-4 py-2 hover:py-3 hover:px-5 hover:-translate-y-1 hover:mb-0 disabled:opacity-50"
             >
               {isSubmitting ? "CREATING ..." : "CREATE"}
             </button>

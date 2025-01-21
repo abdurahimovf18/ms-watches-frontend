@@ -1,18 +1,33 @@
 /* LeftSidebarBox */
 .sidebar-box {
-    @apply w-[40vw] fixed top-[80px] left-0 bg-background z-[51] transition-all 
-    duration-[0.4s] overflow-x-hidden;
+    @apply w-[40vw] fixed top-[80px] left-0 bg-background z-[51]
+    overflow-x-hidden transition-all duration-[0.4s];
     height: calc(100vh - 80px);
 }
 
 /* LeftSidebar ul li */
 .sidebar-item {
-    @apply w-full h-max pl-7 pr-5 flex justify-between items-center
-    hover:bg-zinc-100 transition-all duration-[10];
+    @apply w-full h-max pl-7 pr-5 flex justify-start items-center duration-100
+    transition-all relative;
+}
+
+.ls-header-item {
+    @apply relative;
+}
+
+.sidebar-item::after,
+.ls-header-item::after {
+    content: "";
+    @apply absolute left-0 top-0 bg-foreground opacity-0 w-full h-full transition-opacity duration-[0.1s];
+}
+
+.sidebar-item:hover::after,
+.ls-header-item::after {
+    @apply opacity-5;
 }
 
 .sidebar-text {
-    @apply text-[0.9rem] py-1 font-default;
+    @apply text-[0.9rem] py-1 font-default z-[10] w-full text-start;
 }
 
 .link-item:hover .link-btn {

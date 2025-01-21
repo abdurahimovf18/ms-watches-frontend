@@ -1,16 +1,14 @@
-// apiClient.js
-
 import axios from "axios";
 import { getAccessToken } from "./tokenManager";
 
 
-const apiClient = axios.create({
+export const API = axios.create({
   baseURL: getBackendUrl(),
   timeout: 5000,
 });
 
 
-apiClient.interceptors.request.use((config) => {
+API.interceptors.request.use((config) => {
   const token = getAccessToken();
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
@@ -71,4 +69,4 @@ export function getBackendUrl(path: string = "/"): string {
   return backendHost + path
 }
 
-export default apiClient;
+export default API;

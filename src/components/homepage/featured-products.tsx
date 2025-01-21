@@ -3,10 +3,9 @@
 import { Teachers } from "next/font/google";
 import { FeaturedProductsCarousel } from "@/shared/carousels/featuredProducts/featuredProducts";
 import { Link } from "@/i18n/routing";
-import { getBackendUrl } from "@/utils/apiClient";
+import { API } from "@/utils/apiClient";
 import { useQuery } from "@tanstack/react-query";
 import { iWatch } from "@/shared/watch/watch";
-import axios from "axios";
 import { LoadingSection } from "@/shared/sections/loading-section";
 import { ErrorSection } from "@/shared/sections/error-section";
 
@@ -22,12 +21,8 @@ export function FeaturedProductsSection() {
 		
     queryKey: ["featured-products"],
     queryFn: async () => {
-      const url = getBackendUrl("/watches/V1/featured");
-      const resp = await axios.get(url, {
-        params: {
-          limit: 4,
-        },
-      });
+      const resp = await API.get("watches/v1/featured")
+
       if (!resp.data || !Array.isArray(resp.data)) {
         throw new Error("Invalid data format");
       }
