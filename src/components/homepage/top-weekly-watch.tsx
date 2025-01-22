@@ -1,15 +1,14 @@
 "use client"
 
-import axios from "axios";
 import Image from "next/image";
 import { useQuery } from "@tanstack/react-query";
-import { getBackendUrl } from "@/utils/apiClient";
+import { API } from "@/utils/apiClient";
 import { Link } from "@/i18n/routing";
 
 
 
 interface BackendData {
-	image_url: string,
+	watch_image_url: string,
 	name: string,
 	watch_id: number
 }
@@ -19,9 +18,15 @@ export function TopWeeklyWatchSection() {
 	const {isLoading, data, error} = useQuery<BackendData>({
 		queryKey: ["top-weekly-watch"],
 		queryFn: async () => {
-			const url = getBackendUrl("/watches/V1/top-weekly")
-			const resp = await axios.get(url)
-			return resp.data
+			const resp = await API.get("watches/v1/top-weekly", {
+				params: {
+					limit: 1,
+				},
+				cache: {
+					ttl: 1 * 60 * 60 * 1000
+				}
+			})
+			return resp.data[0]
 		}
 	})
 
@@ -31,7 +36,8 @@ export function TopWeeklyWatchSection() {
 		<section className="container-box py-10">
 			<div className="aspect-[4/3] relative container">
 				<Image 
-					src="https://cdn.shopify.com/s/files/1/0634/9235/8396/t/32/assets/es-8006-02-ms06-1696477951607.jpg?v=1696477958"
+					src={data.watch_image_url}
+					// src="https://cdn.shopify.com/s/files/1/0634/9235/8396/t/32/assets/es-8006-02-ms06-1696477951607.jpg?v=1696477958"
 					alt="Top weekly watch"
 					width={1440}
 					height={900}

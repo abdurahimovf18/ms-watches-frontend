@@ -8,5 +8,5 @@ export function setAccessToken(newToken: string) {
 }
 
 export function getAccessToken(): string | null {
-	return localStorage.getItem(ACCESS_TOKEN_KEY)
+  return localStorage.getItem(ACCESS_TOKEN_KEY)
 }

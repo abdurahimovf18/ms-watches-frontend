@@ -1,49 +1,62 @@
-import axios from "axios";
+import { setupCache, buildMemoryStorage } from "axios-cache-interceptor"
+
+import axios, { AxiosInstance } from "axios";
 import { getAccessToken } from "./tokenManager";
 
+const BASE_URL = "http://localhost:8000/";
+const DEFAULT_API_HEADERS = {
+  Accept:"application/json", 
+}
 
-export const API = axios.create({
-  baseURL: getBackendUrl(),
-  timeout: 5000,
+export const authApiInstance: AxiosInstance = axios.create({
+  baseURL: BASE_URL,
 });
 
+export const apiInstance: AxiosInstance = axios.create({
+  baseURL: BASE_URL,
+});
 
-API.interceptors.request.use((config) => {
+authApiInstance.interceptors.request.use((config) => {
   const token = getAccessToken();
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
-  config.headers["Content-Type"] = "application/json"
-  config.headers.Accept = "application/json"
-  return config;
+  return {...config, ...DEFAULT_API_HEADERS};
+}, (error) => {
+  return Promise.reject(error);
+})
+
+apiInstance.interceptors.request.use((config) => {
+  return {...config, ...DEFAULT_API_HEADERS};
 }, (error) => {
   return Promise.reject(error);
 });
 
+export const API = setupCache(apiInstance, {
+  ttl: 5 * 60 * 1000,
+  storage: buildMemoryStorage(),
+  methods: ["get"],
+  interpretHeader: false,
+});
+
+
+export const AuthAPI = setupCache(authApiInstance, {
+  ttl: 5 * 60 * 1000,
+  storage: buildMemoryStorage(),
+  methods: ["get"],
+  interpretHeader: false,
+});
+
 
 export function isAuthenticated(): boolean {
-  return Boolean(getAccessToken())
-}
-
-
-export function getAuthHeaders(headers: Record<string, string> = {}): Record<string, string> {
-  const token = getAccessToken() || "<token is deleted>";
-
-  return {
-    ...headers,
-    Authorization: `Bearer ${token}`,
-    "Content-Type": headers["Content-Type"] || "application/json",
-    Accept: "application/json",
-  };
+  return !!getAccessToken()
 }
 
 
 export function getAuthErrorMessage(error: unknown, messages: Record<number, string> = {}): string {
-  if (!axios.isAxiosError(error)) {
+  if (!axios.isAxiosError(error) || !error.request) {
     return "An error occurred. Please try again later.";
   }
-
-  if (!error.request) return "An error occurred. Please try again later.";
 
   const response = error.response;
 
@@ -58,9 +71,7 @@ export function getAuthErrorMessage(error: unknown, messages: Record<number, str
     422: "Some of the information provided is incorrect or incomplete. Please review your details and try again.",
     ...messages
   };
-
   const message = statusMessages[status] || "An error occurred. Please try again later.";
-
   return message;
 }
 
@@ -68,5 +79,3 @@ export function getBackendUrl(path: string = "/"): string {
   const backendHost = "http://localhost:8000"
   return backendHost + path
 }
-
-export default API;

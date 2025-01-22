@@ -1,65 +1,84 @@
 import React from "react";
-import "./header.css"
 import { Link } from "@/i18n/routing";
+import { getTopBrands } from "./utils";
+import "./header.css";
+import Image from "next/image";
 
 
-interface iHeaderNavLinksNestedContent {
-	content: Record<string, string> | string;
-	content_key: string;
+export interface iUrl {
+  link: string;
+  imageUrl?: string;
+  title: string;
+  nested?: iUrl[];
 }
 
+export type NestedContent = iUrl[];
 
-function HeaderNavLinksNestedContent({content, content_key}: iHeaderNavLinksNestedContent) {
-
-	if (typeof content === "string") {
-		return (
-			<Link href={content}>
-				{content_key}
-			</Link>
-		)
-	}
-
-	return (
-		<div className="relative">
-			<Link href={content._}>
-				{content_key}
-			</Link>
-			<span className="absolute w-48 left-0 bottom-0 -translate-x-4 translate-y-full bg-white hidden">
-				<ul className="w-full flex flex-col">
-					{
-						Object.entries(content).map(([key, value]) => (
-							key !== "_" &&
-							<Link href={value} key={key}>
-								{key}
-							</Link>
-						))
-					}
-				</ul>
-			</span>
-		</div>
-	)
+interface IHeaderNavLinksNestedContentProps {
+  content: iUrl;
 }
 
-
-export function HeaderNavLinks() {
-	const navLinksTree = {
-		"Promotions": "/",
-		"Brands": {
-			"_": "/brands",
-			"TISSOT": "/brands/tissot"
-		},
-		"About Us": "/",
-		"Contact Us": "/",
-		"Blogs": "/",
-	}
+const HeaderNavLinksNestedContent = React.memo(({ content }: IHeaderNavLinksNestedContentProps) => {
+  const { link, title, nested } = content;
 
   return (
-		<ul className="items-center justify-center gap-5 sm:hidden lg:flex">
-			{Object.entries(navLinksTree).map(([key, content]) => (
-				<li key={key} className="header-ul-element">
-					<HeaderNavLinksNestedContent content_key={key} content={content} />
-				</li>
-			))}
-		</ul>
-	)
-};
+    <div className="relative">
+      <Link href={link}>{title}</Link>
+      {nested && nested.length > 0 && (
+        <span className="absolute w-48 left-0 bottom-0 -translate-x-4 translate-y-full bg-background hidden">
+          <ul className="w-full flex flex-col">
+            {nested.map(({ link, title, imageUrl }, idx) => (
+              <li key={idx}>
+                <Link href={link} className="flex justify-between items-center gap-3 px-6 py-3">
+					<span className="text-sm">
+						{title}
+					</span>
+					<div className="w-[13px] h-[13px] aspect-square">
+						{
+							imageUrl &&
+							<Image 
+								src={imageUrl}
+								alt={`Icon image of ${title}`}
+								width={13}
+								height={13}
+								className="max-w-full max-h-full"
+						 	/>
+						}
+					</div>
+				</Link>
+              </li>
+            ))}
+          </ul>
+        </span>
+      )}
+    </div>
+  );
+})
+
+HeaderNavLinksNestedContent.displayName = "HeaderNavLinksNestedContent";
+
+export async function HeaderNavLinks() {
+  const topBrands = await getTopBrands();
+
+  const navLinksTree: iUrl[] = [
+    { link: "/promotions", title: "Promotions" },
+    {
+      link: "/brands",
+      title: "Brands",
+      nested: topBrands, // Set nested brands as children links
+    },
+    { link: "/about", title: "About Us" },
+    { link: "/contact", title: "Contact Us" },
+    { link: "/blogs", title: "Blogs" },
+  ];
+
+  return (
+    <ul className="items-center justify-center gap-5 sm:hidden lg:flex">
+      {navLinksTree.map((value, idx) => (
+        <li key={idx} className="header-ul-element">
+          <HeaderNavLinksNestedContent content={value} />
+        </li>
+      ))}
+    </ul>
+  );
+}

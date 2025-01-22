@@ -4,7 +4,7 @@ import { SectionCarousel } from "@/shared/carousels/sectionCarousel/sectionCarou
 import { BrandsSection } from "@/components/homepage/brands-section";
 import { LinksSection } from "@/components/homepage/links-section";
 import { FeaturedProductsSection } from "@/components/homepage/featured-products";
-import { TopWeeklyWatchSection } from "@/components/homepage/weekly-watch";
+import { TopWeeklyWatchSection } from "@/components/homepage/top-weekly-watch";
 import { NewArrivalsSection } from "@/components/homepage/new-arrivals-section";
 
 

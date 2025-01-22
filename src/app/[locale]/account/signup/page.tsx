@@ -5,10 +5,9 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { FormErrors } from "@/shared/errors/form-error";
-import { getAuthErrorMessage, getBackendUrl } from "@/utils/apiClient";
+import { getAuthErrorMessage } from "@/utils/apiClient";
 import { useRouter } from "@/i18n/routing";
 import { API } from "@/utils/apiClient"
-import { url } from "inspector";
 
 
 const SignupFormSchema = z.object({

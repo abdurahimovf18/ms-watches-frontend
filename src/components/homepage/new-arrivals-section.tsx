@@ -20,6 +20,9 @@ export function NewArrivalsSection() {
 					params: {
 						limit: 4,
 					},
+					cache: {
+						ttl: 1 * 60 * 60 * 1000
+					}
 				}
 			)
 			return resp.data

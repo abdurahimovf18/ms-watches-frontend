@@ -9,7 +9,7 @@ import { FormErrors } from "@/shared/errors/form-error";
 import { setAccessToken } from "@/utils/tokenManager";
 import { API } from "@/utils/apiClient";
 import { useRouter } from "@/i18n/routing";
-import { getAuthErrorMessage, getBackendUrl } from "@/utils/apiClient";
+import { getAuthErrorMessage } from "@/utils/apiClient";
 
 const LoginFormSchema = z.object({
   email: z
