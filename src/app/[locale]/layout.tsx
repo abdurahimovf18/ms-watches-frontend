@@ -4,12 +4,21 @@ import { getMessages } from "next-intl/server";
 import { Header } from "../../components/header/header";
 import { Footer } from "@/components/footer/footer";
 import { ReactQueryClientProvider } from "@/utils/providers/react-query";
+import { Geist } from "next/font/google";
 
 
 export const metadata = {
   title: 'Montana Swiss',
   description: 'ms_watches.uz',
 };
+
+
+const geist = Geist({
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
+  subsets: ["latin-ext"],
+  variable: "--geist"
+})
+
 
 export default async function LocaleLayout({
   children,
@@ -21,7 +30,7 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
+    <html lang={locale} className={`scrollbar-styles ${geist.className}`}>
       <body className="">
         <NextIntlClientProvider messages={messages}>
           <Header />

@@ -4,21 +4,22 @@
 
 
 :root {
-  --background: #fff;
-  --foreground: #18181b;
+  --light: #fff;
+  --dark: #18181b;
+  --background: var(--light);
+  --foreground: var(--dark);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #18181b;
-    --foreground: #fff;
+    --background: var(--dark);
+    --foreground: var(--light);
   }
 }
 
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
   @apply antialiased min-h-screen w-screen overflow-x-hidden bg-background 
   text-foreground transition-colors ease-out duration-300;
 }
@@ -88,11 +89,12 @@ body {
 }
 
 .link-btn {
-  position: relative !important;
+  @apply relative font-bold;
+  /* position: relative !important; */
 }
 
 .link-btn span {
-  @apply bg-transparent z-[10];
+  @apply bg-transparent sticky z-20;
 }
 
 .center-absolute {
@@ -100,24 +102,17 @@ body {
 }
 
 .link-btn-css {
-  @apply absolute center-absolute bg-inherit ;
+  @apply absolute center-absolute bg-inherit;
 }
 
 .link-btn::before {
-  @apply link-btn-css hidden ;
-  transform: translate(-50%, -50%);
+  content: "";
+  @apply link-btn-css hidden;
   width: calc(100% + 2px);
   height: calc(100% + 2px);
 }
 
-.link-btn::after {
-  content: "";
-  @apply link-btn-css size-full;
-  background-color: inherit;
-}
-
 .link-btn:hover::before {
-  content: "";
   @apply block;
 }
 
@@ -130,7 +125,7 @@ body {
 }
 
 .section-title {
-  @apply w-full font-teachers font-black text-[1.575rem];
+  @apply w-full font-black text-[1.575rem];
 }
 
 .loading {
@@ -153,4 +148,27 @@ body {
   100% {
     background-position: top left;
   }
+}
+.scrollbar-styles {
+  scrollbar-width: thin; 
+  scrollbar-color: var(--foreground) transparent;
+}
+
+.scrollbar-styles::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.scrollbar-styles::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-styles::-webkit-scrollbar-thumb {
+  background-color: var(--foreground);
+  border-radius: 4px;
+  transition: background-color 0.2s ease, width 0.2s ease, height 0.2s ease;
+}
+
+.scrollbar-styles::-webkit-scrollbar-thumb:hover {
+  background-color: darken(var(--foreground), 10%);
 }

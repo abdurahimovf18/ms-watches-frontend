@@ -1,0 +1,22 @@
+
+.form-input-box {
+    @apply relative bg-inherit w-full; 
+}
+
+.form-input-label {
+    @apply absolute left-3 top-1/2 transition-all duration-[0.1s] 
+    ease-in -translate-y-1/2 cursor-pointer;
+}
+
+.form-input {
+    @apply outline-none px-3 text-lg pt-2 cursor-pointer focus:cursor-text 
+    bg-inherit w-full h-[45px] ring-1 ring-foreground ring-opacity-80 hover:ring-2;
+}
+
+/* .form-input:hover + .form-input-label, */
+.form-input:focus + .form-input-label,
+.form-input:not(:placeholder-shown)+ .form-input-label {
+    transform: translate(0, -140%);
+    font-size: 10px;
+    @apply opacity-80;
+}

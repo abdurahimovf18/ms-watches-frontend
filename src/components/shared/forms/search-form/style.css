@@ -1,0 +1,22 @@
+
+
+#result-line:hover #result-line-text {
+  @apply underline;
+}
+
+#link-value:hover #link-value-icon {
+  transform: translateX(0); 
+}
+
+.bg-hover {
+  @apply relative;
+}
+
+.bg-hover::after {
+  content: "";
+  @apply absolute left-0 top-0 w-full h-full bg-foreground opacity-0 transition-opacity duration-[90ms];
+}
+
+.bg-hover:hover::after {
+  @apply opacity-5;
+}

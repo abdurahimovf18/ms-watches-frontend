@@ -1,9 +1,9 @@
 import { ShoppingBag } from "lucide-react";
-import { LeftSideBarBtn } from "@/shared/buttons/left-sidebar-btn";
-import { MainLogo } from "@/shared/logo";
-import { SearchFormBtn } from "@/shared/buttons/search-form-btn";
+import { LeftSideBarBtn } from "@/components/shared/buttons/left-sidebar-btn";
+import { MainLogo } from "@/components/shared/logo";
+import { SearchFormBtn } from "@/components/shared/buttons/search-form-btn";
 import { Link } from "@/i18n/routing";
-import { LoginAccountIcon } from "@/shared/buttons/loginAccountIcon";
+import { LoginAccountIcon } from "@/components/shared/buttons/loginAccountIcon";
 import { HeaderNavLinks } from "./navLinks";
 import React from "react";
 import "./header.css";

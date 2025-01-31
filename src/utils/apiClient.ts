@@ -37,21 +37,38 @@ export const API = setupCache(apiInstance, {
   storage: buildMemoryStorage(),
   methods: ["get"],
   interpretHeader: false,
-});
-
+  cachePredicate: {
+    responseMatch: (response) => (
+      response.data !== null &&
+      response.data !== undefined &&
+      (
+        Array.isArray(response.data)
+          ? response.data.length > 0
+          : true
+      )
+    )
+}});
 
 export const AuthAPI = setupCache(authApiInstance, {
   ttl: 5 * 60 * 1000,
   storage: buildMemoryStorage(),
   methods: ["get"],
   interpretHeader: false,
-});
-
+  cachePredicate: {
+    responseMatch: (response) => (
+      response.data !== null &&
+      response.data !== undefined &&
+      (
+        Array.isArray(response.data)
+          ? response.data.length > 0
+          : true
+      )
+    )
+}});
 
 export function isAuthenticated(): boolean {
   return !!getAccessToken()
 }
-
 
 export function getAuthErrorMessage(error: unknown, messages: Record<number, string> = {}): string {
   if (!axios.isAxiosError(error) || !error.request) {

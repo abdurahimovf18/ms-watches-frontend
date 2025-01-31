@@ -11,11 +11,20 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        default: "Pragmatica",
-        ffmeta: "FF Meta",
-        teachers: "Teachers",
+        geist: ["var(--geist)", "teachers"]
+      },
+      fontWeight: {
+        "geist-300": "300",
+        "geist-400": "400",
+        "geist-500": "500",
+        "geist-600": "600",
+        "geist-700": "700",
+        "geist-800": "800",
+        "geist-900": "900",
       },
       colors: {
+        light: "var(--light)",
+        dark: "var(--dark)",
         background: "var(--background)",
         foreground: "var(--foreground)",
       },

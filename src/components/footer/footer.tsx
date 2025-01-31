@@ -1,13 +1,14 @@
 import { ArrowRight } from "lucide-react";
 import { LinkBox } from "./link-box";
+import { FormInput } from "../shared/inputs/form-input";
 
 
 function EmailRegistration() {
 	return (
 		<div className="w-[275px] flex flex-col justify-center items-start gap-1 mt-1">
-			<h3 className="text-foreground text-[1.5rem] font-black">Subscribe to our emails</h3>
+			<h3 className="text-foreground text-[1.3rem] font-black">Subscribe to our emails</h3>
 			<p className="text-foreground opacity-85 text-[0.8rem]">Be updated with our latest news and offers</p>
-
+			
 			<form
 			className="w-full h-[30px] flex items-center justify-center border-b-[1px]
 				border-foreground cursor-text mt-3">
@@ -49,9 +50,9 @@ export function Footer() {
 			"Contact Us": "/the-watch-store/contact-us",
 			"News": "/the-watch-store/news",
 		},
-		"STORE": {
-			"Facebook": "https://www.facebook.com/TheWatchStore",
-			"Instagram": "https://www.instagram.com/TheWatchStore",
+		"FOLLOW US": {
+			"Facebook": "https://www.facebook.com/MontanaSwiss",
+			"Instagram": "https://www.instagram.com/MontanaSwiss",
 		},
 	};
 	
@@ -64,9 +65,8 @@ export function Footer() {
 
 				<div className="flex flex-wrap gap-5 justify-between items-start 
 				lg:w-[60%] md:w-[70%] h-max sm:px-1 md:px-2 lg:px-1 sm:w-full">
-					{
-						Object.entries(footerLinks).map(([title, links]) => <LinkBox key={title} title={title} links={links} />)
-					}
+					{Object.entries(footerLinks).map(([title, links]) => 
+					<LinkBox key={title} title={title} links={links} />)}
 				</div>
 				<EmailRegistration />
 			</div>

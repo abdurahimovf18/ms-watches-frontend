@@ -1,11 +1,12 @@
 // import { useTranslations } from "next-intl";
 import Image from "next/image";
-import { SectionCarousel } from "@/shared/carousels/sectionCarousel/sectionCarousel";
-import { BrandsSection } from "@/components/homepage/brands-section";
-import { LinksSection } from "@/components/homepage/links-section";
-import { FeaturedProductsSection } from "@/components/homepage/featured-products";
-import { TopWeeklyWatchSection } from "@/components/homepage/top-weekly-watch";
-import { NewArrivalsSection } from "@/components/homepage/new-arrivals-section";
+import { SectionCarousel } from "@/components/shared/carousels/sectionCarousel/sectionCarousel";
+import { BrandsSection } from "@/components/pages/homepage/brands-section";
+import { LinksSection } from "@/components/pages/homepage/links-section";
+import { FeaturedProductsSection } from "@/components/pages/homepage/featured-products";
+import { TopWeeklyWatchSection } from "@/components/pages/homepage/top-weekly-watch";
+import { NewArrivalsSection } from "@/components/pages/homepage/new-arrivals-section";
+import { SocialLinksSection } from "@/components/pages/homepage/social-links";
 
 
 export default function Home() {
@@ -48,6 +49,7 @@ export default function Home() {
       <FeaturedProductsSection />
       <TopWeeklyWatchSection />
       <NewArrivalsSection />
+      <SocialLinksSection />
     </main>
   );
 }
