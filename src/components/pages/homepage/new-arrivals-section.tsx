@@ -12,7 +12,7 @@ export async function NewArrivalsSection() {
 		<section className="container-box py-4">
 			<div className="container flex flex-col">
 				<h1 className="section-title">NEW ARRIVALS</h1>
-				<div className="w-full flex flex-wrap items-start pt-1">
+				<div className="w-full flex flex-wrap items-start pt-7">
 					{data.map((watch_data) => (
 						<div key={`${watch_data.watch_id}$${watch_data.name}`} className="sm:w-1/2 lg:w-1/4 px-1">
 							<Watch data={watch_data} />

@@ -11,7 +11,7 @@ export function LoginAccountIcon() {
 			href={isAuthenticated() ? "/account/" : "/account/signin/"}
 			className="sm:hidden md:block"
 		>
-			<UserRound strokeWidth={1} className="icons cursor-pointer"/>
+			<UserRound strokeWidth={1.2} className="icons cursor-pointer"/>
 		</Link>
 	)
 }

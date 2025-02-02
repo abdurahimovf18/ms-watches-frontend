@@ -29,7 +29,7 @@ export function LeftSideBarBtn() {
 				onClick={() => setOpen(prev => !prev)}
 			>
 				
-				{open ? <X strokeWidth={1} /> : <Menu strokeWidth={1} />}
+				{open ? <X strokeWidth={1.2} /> : <Menu strokeWidth={1.2} />}
 			
 			</div>
 

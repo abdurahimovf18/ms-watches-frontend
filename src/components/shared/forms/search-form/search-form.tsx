@@ -22,13 +22,7 @@ export function SearchForm() {
     })
   }
 
-  const isVisible = () => Array.from(visibleValues).length !== 0
-
-  useEffect(() => {
-    const value = 1;
-    if (searchValue) addVisibleValue(value)
-    else deleteVisibleValue(value)
-  }, [searchValue])
+  const isVisible = () => Array.from(visibleValues).length !== 0 && searchValue 
 
   return (
     <div className="w-screen h-[80px] flex justify-center items-center">
@@ -42,6 +36,10 @@ export function SearchForm() {
           onMouseEnter={() => addVisibleValue(4)}
           onMouseLeave={() => deleteVisibleValue(4)}
           />
+
+        <div className="">
+
+        </div>
         
         <div className={`${isVisible() ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"} 
           transition-all duration-100`}>

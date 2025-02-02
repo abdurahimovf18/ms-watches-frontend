@@ -14,7 +14,7 @@ const HeaderActions = () => (
   <div className="flex items-center justify-center gap-2">
     <LeftSideBarBtn />
     <SearchFormBtn />
-    <ShoppingBag strokeWidth={1} className="icons cursor-pointer" />
+    <ShoppingBag strokeWidth={1.2} className="icons cursor-pointer" />
     <LoginAccountIcon />
   </div>
 );
@@ -24,7 +24,7 @@ export const Header = () => {
   return (
     <>
       <header className="fixed left-0 top-0 z-[50] bg-inherit">
-        <nav className="px-4 w-[100vw]">
+        <nav className="px-8 w-[100vw]">
           <div className="flex justify-between items-center">
             <Link href="/">
               <MainLogo />

@@ -36,7 +36,7 @@ export async function SocialLinksSection() {
     return (
         <section className="container-box text-white bg-zinc-900">
             <div className="container pt-16 pb-2">
-                <h1 className={`section-title ${blackTeachers.className} pt-2`}>MORE OF THE MONTANA SWISS UZ</h1>
+                <h1 className={`section-title ${blackTeachers.className} pt-2`}>MORE OF THE MONTANA SWISS</h1>
 
                 <div className="flex overflow-x-scroll w-full py-6 gap-3 scrollbar-styles">
                     {social_links.map((social_links, index) => (

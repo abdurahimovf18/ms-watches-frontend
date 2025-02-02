@@ -22,21 +22,25 @@ function Brand({brand, className, ...rest}: iBrandComponent) {
   const url = id ? `/brands/${id}` : '/404'
 
   return (
-    <Link 
-      href={url}
-      className={`bg-light sm:w-[49%] lg:w-[32.7%] aspect-4/3 flex justify-center items-center 
-        ${className} shadow-[0_0_3px_rgba(0,0,0,0.5)] p-10`}
+    <div 
+      className={`sm:w-[50%] lg:w-[33.333%] aspect-4/3
+        ${className} p-1`}
       {...rest}>
       
-      <Image 
-        src={image_url}
-        alt={name}
-        width={480}
-        height={240}
-        className="max-w-full max-h-full"
-      />
+      <Link
+      href={url}
+      className="w-full h-full p-8 bg-light shadow-[0_0_3px_rgba(0,0,0,0.5)]  flex justify-center items-center">
+        <Image 
+          src={image_url}
+          alt={name}
+          width={480}
+          height={240}
+          className="max-w-full max-h-full"
+        />
+      </Link>
+      
 
-    </Link>
+    </div>
   )
 }
 
@@ -50,7 +54,7 @@ export async function BrandsSection() {
     <section className="container-box">
       <div className="container py-8">
         <h2 className="section-title">SHOP OUR BRANDS</h2>
-        <div className="flex justify-center flex-wrap sm:gap-1 md:gap-2 lg:gap-1 pt-8">
+        <div className="flex justify-center flex-wrap pt-8">
           {safeBrands.map((brand , index) => (
             <Brand brand={brand} key={`${brand}${index}`} />
           ))}

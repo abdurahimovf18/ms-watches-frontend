@@ -23,7 +23,7 @@ export function SearchFormBtn() {
 	return (
 		<>
 			<Search
-				strokeWidth={1}
+				strokeWidth={1.2}
 				onClick={() => setOpen(true)}
 				className="icons cursor-pointer" 
 			/>
